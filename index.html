@@ -33,12 +33,23 @@
   .nav-logo {
     display: flex; align-items: center; gap: 12px; text-decoration: none;
   }
-  .nav-logo-emblem {
-    width: 44px; height: 44px; background: var(--gold);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 18px;
-    color: var(--deep-green); flex-shrink: 0;
-  }
+  .nav-logo-emblem{
+   width: 190px;px;
+  height:72px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  background: transparent;
+}
+
+.nav-logo-emblem img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
   .nav-logo-text { display: flex; flex-direction: column; }
   .nav-logo-text span:first-child {
     font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px;
@@ -298,6 +309,7 @@
   }
   .form-submit:hover { background: #8f1122; transform: translateY(-2px); }
   .success-msg { display: none; background: rgba(45,106,79,0.08); border: 1px solid var(--soft-green); border-radius: 8px; padding: 16px; color: var(--soft-green); font-size: 14px; text-align: center; margin-top: 16px; }
+  .error-msg { display: none; background: rgba(181,25,47,0.07); border: 1px solid var(--crimson); border-radius: 8px; padding: 16px; color: var(--crimson); font-size: 14px; text-align: center; margin-top: 16px; }
 
   /* FOOTER */
   footer {
@@ -313,10 +325,108 @@
   .footer-col p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
   .footer-bottom { padding-top: 28px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.35); }
   .footer-bottom a { color: var(--gold); text-decoration: none; }
+  .footer-logo{
+  background: var(--gold);
+  padding: 4px;
+}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.footer-logo img{
+  border-radius: 50%;
+}
 
+  /* STAFF SECTION */
+ .staff-section {
+  padding: 80px 8%;
+  background: var(--warm-cream);
+  border-top: 1px solid var(--border);
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.staff-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.staff-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* UPDATED FOR REAL IMAGES */
+.staff-avatar {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.staff-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.staff-info {
+  padding: 18px 14px 22px;
+}
+
+.staff-info h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.staff-info p {
+  font-size: 0.78rem;
+  color: var(--crimson);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.staff-info small {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .staff-grid .staff-card:last-child {
+    grid-column: 1/-1;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   /* MOBILE */
   @media (max-width: 768px) {
     .nav-links { display: none; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--deep-green); padding: 20px; z-index: 998; }
@@ -341,10 +451,9 @@
 <!-- NAVIGATION -->
 <nav>
   <a href="#" class="nav-logo" onclick="showPage('home')">
-    <div class="nav-logo-emblem">W</div>
-    <div class="nav-logo-text">
-      <span>Women's Action for Self Reliance</span>
-      <span>WASR · Malawi</span>
+
+    <div class="nav-logo-emblem">
+      <img src="image/wasrlogo.png" alt="WASR Logo">
     </div>
   </a>
   <div class="nav-links" id="navLinks">
@@ -410,22 +519,22 @@
       <div class="focus-card">
         <div class="focus-icon" style="background:rgba(45,106,79,0.08)">📚</div>
         <h3>Education &amp; Literacy</h3>
-        <p>Providing non-formal education and literacy programmes to women and girls who missed formal schooling opportunities.</p>
+        <p>Promoting access to non-formal education, literacy, and life skills programs for women and girls who face barriers to formal education.</p>
       </div>
       <div class="focus-card">
         <div class="focus-icon" style="background:rgba(212,160,23,0.1)">🏥</div>
         <h3>Health &amp; Wellbeing</h3>
-        <p>Raising awareness on reproductive health, nutrition, and access to healthcare services across rural communities.</p>
+        <p>Supporting community awareness on reproductive health, maternal wellbeing, nutrition, mental health, and access to essential healthcare services.</p>
       </div>
       <div class="focus-card">
         <div class="focus-icon" style="background:rgba(26,58,42,0.08)">⚖️</div>
         <h3>Rights &amp; Advocacy</h3>
-        <p>Advocating for women's legal rights, protection from gender-based violence, and equal representation.</p>
+        <p>Advocating for women’s rights, gender equality, protection from gender-based violence, and increased participation of women in leadership and decision-making.</p>
       </div>
       <div class="focus-card">
         <div class="focus-icon" style="background:rgba(181,25,47,0.08)">🤝</div>
         <h3>Community Mobilisation</h3>
-        <p>Engaging local leaders, men and boys as allies in driving gender equality and women's leadership.</p>
+        <p>Empowering women with sustainable agriculture practices, climate resilience skills, and food security initiatives to improve household wellbeing and environmental sustainability.</p>
       </div>
       <div class="focus-card">
         <div class="focus-icon" style="background:rgba(45,106,79,0.08)">🌱</div>
@@ -508,9 +617,89 @@
     </div>
   </div>
 
-</div>
+  <!-- STAFF MEMBERS SECTION -->
+  <div class="staff-section">
+    <span class="section-tag">The People Behind WASR</span>
+    <h2 class="section-title">Our Team</h2>
+    <p class="section-sub">Meet the dedicated women and men who drive WASR's mission every day in Dowa and across the Central Region of Malawi.</p>
 
-<!-- ========================= PROGRAMS PAGE ========================= -->
+    <div class="staff-grid">
+
+      <div class="staff-card">
+        <div class="staff-avatar"
+         style="background-image: url('image/wasrlogo.png');
+              background-size: cover;
+              background-position: center;">
+         </div>
+        <div class="staff-info">
+          <h4>Grace Banda</h4>
+          <p>Executive Director</p>
+          <small>Leading WASR's strategy and partnerships since founding.</small>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-avatar"
+         style="background-image: url('image/wasrlogo.png');
+              background-size: cover;
+              background-position: center;">
+         </div>
+        <div class="staff-info">
+          <h4>Mary Phiri</h4>
+          <p>Programs Manager</p>
+          <small>Oversees all four programme areas and field operations.</small>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-avatar"
+         style="background-image: url('image/wasrlogo.png');
+              background-size: cover;
+              background-position: center;">
+         </div>
+        <div class="staff-info">
+          <h4>Esther Mwale</h4>
+          <p>Finance &amp; Admin Officer</p>
+          <small>Manages WASR's finances, reporting, and administration.</small>
+        </div>
+      </div>
+
+      <div class="staff-card">
+        <div class="staff-avatar"
+         style="background-image: url('image/wasrlogo.png');
+              background-size: cover;
+              background-position: center;">
+         </div>
+        <div class="staff-info">
+          <h4>Agnes Tembo</h4>
+          <p>Community Mobiliser</p>
+          <small>Engages villages and leads women's group facilitation in Dowa.</small>
+        </div>
+      </div>
+
+      <div class="staff-card">
+
+        <div class="staff-avatar"
+         style="background-image: url('image/wasrlogo.png');
+              background-size: cover;
+              background-position: center;">
+         </div>
+
+      <div class="staff-info">
+        <h4>Grace Banda</h4>
+         <p>Executive Director</p>
+        <small>
+         Leading WASR's strategy and partnerships since founding.
+        </small>
+       </div>
+
+     </div>
+
+   </div>
+
+  </div>
+
+</div>
 <div class="page" id="page-programs">
 
   <div class="programs-hero">
@@ -647,38 +836,42 @@
 
     <div class="contact-form-wrap">
       <h2>Send Us a Message</h2>
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="Jane" id="fname">
+      <form action="https://api.staticforms.dev/submit" method="POST">
+         <input type="hidden" name="apiKey" value="sf_c662bdc89c565149b5fbc729" />
+         <input type="hidden" name="subject" value="Contact form submission" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Jane" id="fname" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Banda" id="lname">
+          </div>
         </div>
         <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Banda" id="lname">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="jane@example.com" id="email" required oninput="document.getElementById('replyto_field').value=this.value">
         </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="jane@example.com" id="email">
-      </div>
-      <div class="form-group">
-        <label>Subject</label>
-        <select id="subject">
-          <option value="">Select a topic...</option>
-          <option>General Enquiry</option>
-          <option>Partnership / Collaboration</option>
-          <option>Donation / Funding</option>
-          <option>Volunteer Opportunity</option>
-          <option>Program Information</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Write your message here..." id="message"></textarea>
-      </div>
-      <button class="form-submit" onclick="submitForm()">Send Message →</button>
-      <div class="success-msg" id="successMsg">✅ Thank you! Your message has been sent. We'll get back to you soon.</div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select name="subject" id="subject">
+            <option value="">Select a topic...</option>
+            <option>General Enquiry</option>
+            <option>Partnership / Collaboration</option>
+            <option>Donation / Funding</option>
+            <option>Volunteer Opportunity</option>
+            <option>Program Information</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Write your message here..." id="message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+        <div class="success-msg" id="successMsg">✅ Thank you! Your message has been sent to womeninaction2000@gmail.com. We'll get back to you soon.</div>
+      </form>
     </div>
   </div>
 
@@ -710,7 +903,7 @@
       <br>
       <a href="tel:+265994136143">📞 +265 994 136 143</a>
       <a href="mailto:womeninaction2000@gmail.com">✉️ womeninaction2000@gmail.com</a>
-      <a href="https://facebook.com" target="_blank">👥 WASR Organisation</a>
+      <a href="https://facebook.com/share/1CGjwKf4i2/?mibextid=wwXlfr" target="_blank">👥 WASR Organisation</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -733,22 +926,34 @@ function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 
-function submitForm() {
-  const fname = document.getElementById('fname').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-  if (!fname || !email || !message) {
-    alert('Please fill in your name, email and message before sending.');
-    return;
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('successMsg');
+  const errorMsg = document.getElementById('errorMsg');
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const form = document.getElementById('contactForm');
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      successMsg.style.display = 'block';
+      form.reset();
+    } else {
+      errorMsg.style.display = 'block';
+    }
+  } catch (err) {
+    errorMsg.style.display = 'block';
   }
-  const msg = document.getElementById('successMsg');
-  msg.style.display = 'block';
-  ['fname','lname','email','subject','message'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el.tagName === 'SELECT') el.selectedIndex = 0;
-    else el.value = '';
-  });
-  setTimeout(() => msg.style.display = 'none', 6000);
+  btn.textContent = 'Send Message →';
+  btn.disabled = false;
 }
 </script>
 </body>
